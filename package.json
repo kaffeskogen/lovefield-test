@@ -1,0 +1,14 @@
+{
+  "name": "lovefield-test",
+  "version": "0.0.1",
+  "description": "",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alfred Gårdeskog",
+  "license": "ISC",
+  "dependencies": {
+    "lovefield": "^2.1.12"
+  }
+}
