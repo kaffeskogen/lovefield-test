@@ -9,6 +9,7 @@
   "author": "Alfred Gårdeskog",
   "license": "ISC",
   "dependencies": {
+    "knockout": "^3.4.2",
     "lovefield": "^2.1.12"
   }
 }

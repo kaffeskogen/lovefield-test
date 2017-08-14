@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="author" content="Alfred Gårdeskog" />
@@ -9,41 +10,49 @@
     <link rel="stylesheet" href="styles.css">
     <title>Title</title>
 </head>
+
 <body>
     <div class="wrapper">
-        <h1>Lovefield test</h1>
-        <table>  
+        <h1 style="display: inline-block;">Lovefield test</h1>
+        <div style="float: right; padding-top: 36px;">
+            <input data-bind="textInput: fieldName" placeholder="Field name"></input>
+            <select data-bind="value: selectedFieldType">
+                <option value="0">ARRAY_BUFFER</option>
+                <option value="1">BOOLEAN</option>
+                <option value="2">DATE_TIME</option>
+                <option value="3">INTEGER</option>
+                <option value="4">NUMBER</option>
+                <option value="5">STRING</option>
+                <option value="6">OBJECT</option>
+            </select>
+            <button type="button" class="btn--small" data-bind="click: addField">Add field</button>
+        </div>
+        <table>
+            <tr data-bind="foreach: fields">
+                <th data-bind="text: name"></th>
+            </tr>
+
+            <!-- ko foreach: { data: items, as: 'it'} -->
             <tr>
-                <th>One</th>
-                <th>Two</th>
-                <th>Three</th>
+                <!-- ko foreach: {data: $parent.fields, as: 'field'} -->
+                <td data-bind="text:it[field.name]"></td>
+                <!-- /ko -->
             </tr>
-            <tr>
-                <td>Apples</td>
-                <td>Carrots</td>
-                <td>Steak</td>
+            <!-- /ko -->
+
+            <tr class="no-padding" data-bind="foreach: fields ">
+                <td><input data-bind="attr: { 'data-name': name} "></td>
             </tr>
-            <tr>
-                <td>Oranges</td>
-                <td>Potato</td>
-                <td>Pork</td>
-            </tr>
-            <tr>
-                <td>Pears</td>
-                <td>Peas</td>
-                <td>Chicken</td>
-            </tr>
-            
-            <tr class="no-padding">
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-            </tr>
-        </table>  
+        </table>
 
         <div class="actions">
-            <button class="btn">+ Add</button>
+            <button type="button" class="btn" data-bind="click: addNewItem">+ Add</button>
         </div>
     </div>
+
+    <script src="/node_modules/knockout/build/output/knockout-latest.js "></script>
+    <script src="/node_modules/lovefield/dist/lovefield.js "></script>
+    <script src="app.js "></script>
 </body>
+
 </html>
